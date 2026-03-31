@@ -1,0 +1,61 @@
+.hero {
+  display: flex; align-items: center;
+  min-height: 560px; padding: 60px 5%;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff 100%);
+  gap: 60px;
+}
+
+.text { flex: 1; max-width: 560px; }
+
+.eyebrow {
+  display: inline-block;
+  background: #fef3c7; color: #92400e;
+  font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 99px; margin-bottom: 16px;
+}
+
+.text h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800; line-height: 1.15; margin-bottom: 18px;
+}
+.text h1 span { color: var(--primary); }
+
+.text p {
+  font-size: 1.05rem; color: var(--muted);
+  margin-bottom: 32px; max-width: 440px;
+}
+
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.imageWrap {
+  flex: 1; display: flex; justify-content: center; min-width: 280px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+  width: 100%; max-width: 380px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+
+.miniProduct {
+  background: var(--light);
+  border-radius: 12px; padding: 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-size: .8rem;
+}
+
+.emoji    { font-size: 2.4rem; }
+.pName    { font-weight: 600; color: var(--dark); text-align: center; }
+.price    { color: var(--primary); font-weight: 700; }
+.saleBadge {
+  background: #fee2e2; color: #dc2626;
+  font-size: .68rem; font-weight: 700;
+  padding: 2px 8px; border-radius: 99px;
+}
+
+@media (max-width: 768px) {
+  .hero { flex-direction: column; padding: 40px 5%; }
+}

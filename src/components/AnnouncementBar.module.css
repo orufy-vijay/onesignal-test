@@ -1,0 +1,9 @@
+.bar {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: .85rem;
+  font-weight: 500;
+}
+.bar strong { font-weight: 700; }

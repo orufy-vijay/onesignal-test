@@ -1,0 +1,20 @@
+.section { padding-bottom: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+  font-size: .9rem; font-weight: 600;
+}
+.card:hover { background: #ffedd5; transform: translateY(-2px); }
+
+.emoji { font-size: 2.2rem; display: block; margin-bottom: 8px; }

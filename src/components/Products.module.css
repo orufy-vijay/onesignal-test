@@ -1,0 +1,45 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+  transition: box-shadow .2s, transform .2s;
+  cursor: pointer;
+}
+.card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+
+.img {
+  background: var(--light);
+  height: 180px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+  position: relative;
+}
+
+.body { padding: 16px; }
+.name { font-weight: 600; margin-bottom: 4px; }
+.cat  { font-size: .8rem; color: var(--muted); margin-bottom: 10px; }
+
+.foot {
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.price { font-weight: 700; color: var(--dark); }
+.old {
+  font-size: .8rem; color: var(--muted);
+  text-decoration: line-through; margin-left: 6px; font-weight: 400;
+}
+
+.addBtn {
+  background: var(--primary); color: #fff;
+  border: none; border-radius: 8px;
+  padding: 7px 14px; font-size: .8rem; font-weight: 600;
+  cursor: pointer; transition: background .2s; font-family: inherit;
+}
+.addBtn:hover { background: var(--primary-d); }

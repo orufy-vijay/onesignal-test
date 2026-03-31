@@ -1,0 +1,62 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:   #f97316;
+  --primary-d: #ea6c0a;
+  --dark:      #111827;
+  --mid:       #374151;
+  --muted:     #6b7280;
+  --light:     #f9fafb;
+  --border:    #e5e7eb;
+  --white:     #ffffff;
+  --radius:    12px;
+  --shadow:    0 4px 24px rgba(0,0,0,.08);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 22px; border-radius: 8px;
+  font-size: .9rem; font-weight: 600; cursor: pointer;
+  border: 2px solid transparent; transition: all .2s;
+  font-family: inherit;
+}
+.btn-primary  { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-d); border-color: var(--primary-d); }
+.btn-outline  { background: transparent; color: var(--primary); border-color: var(--primary); }
+.btn-outline:hover { background: var(--primary); color: #fff; }
+.btn-dark     { background: var(--dark); color: #fff; border-color: var(--dark); }
+.btn-dark:hover { background: var(--mid); border-color: var(--mid); }
+.btn-white    { background: #fff; color: var(--primary); border-color: #fff; font-weight: 700; }
+.btn-white:hover { background: #fff7ed; }
+
+/* ── SECTION WRAPPER ── */
+.section { padding: 60px 5%; }
+.section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 32px;
+}
+.section-header h2 { font-size: 1.6rem; font-weight: 800; }
+.section-header a  { font-size: .9rem; color: var(--primary); font-weight: 600; }
+
+/* ── TAG / BADGE ── */
+.tag {
+  position: absolute; top: 12px; left: 12px;
+  font-size: .7rem; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+}
+.tag-sale  { background: #fee2e2; color: #dc2626; }
+.tag-new   { background: #dbeafe; color: #1d4ed8; }
+.tag-hot   { background: #fef3c7; color: #b45309; }
+
+@media (max-width: 768px) {
+  .section { padding: 40px 5%; }
+}
