@@ -9,6 +9,18 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+         appId: "935bf00d-b3ab-4e82-afd2-18d7e300e49d",
+         notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script>
   </head>
   <body>
     <div id="root"></div>

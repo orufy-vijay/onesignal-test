@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import OneSignal from "react-onesignal";
 
 import Navbar from "./components/Navbar";
 import AnnouncementBar from "./components/AnnouncementBar";
@@ -11,7 +10,10 @@ import PromoBanner from "./components/PromoBanner";
 import Footer from "./components/Footer";
 import Toast from "./components/Toast";
 
-const ONESIGNAL_APP_ID = "YOUR_ONESIGNAL_APP_ID"; // 🔑 Replace with your App ID
+// Access the OneSignal instance loaded via CDN in index.html
+function getOS() {
+  return window.OneSignal;
+}
 
 export default function App() {
   const [cartCount, setCartCount] = useState(0);
@@ -19,15 +21,13 @@ export default function App() {
   const [subscribed, setSubscribed] = useState(false);
   const [osReady, setOsReady] = useState(false);
 
-  // Init OneSignal once
+  // Wait for OneSignal (CDN) to be ready, then sync state
   useEffect(() => {
-    OneSignal.init({
-      appId: ONESIGNAL_APP_ID,
-      notifyButton: { enable: false },
-      allowLocalhostAsSecureOrigin: true,
-    }).then(() => {
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    window.OneSignalDeferred.push(function (OneSignal) {
       setOsReady(true);
       setSubscribed(OneSignal.Notifications.permission === true);
+
       OneSignal.Notifications.addEventListener("permissionChange", (perm) => {
         setSubscribed(perm === true);
       });
@@ -49,13 +49,14 @@ export default function App() {
 
   const toggleNotifications = useCallback(async () => {
     if (!osReady) return;
+    const OS = getOS();
     if (subscribed) {
-      await OneSignal.User.PushSubscription.optOut();
+      await OS.User.PushSubscription.optOut();
       setSubscribed(false);
       showToast("🔕 Unsubscribed from notifications.");
     } else {
-      await OneSignal.Notifications.requestPermission();
-      const granted = OneSignal.Notifications.permission === true;
+      await OS.Notifications.requestPermission();
+      const granted = OS.Notifications.permission === true;
       setSubscribed(granted);
       if (granted) showToast("🔔 You're now subscribed to deal alerts!");
     }
