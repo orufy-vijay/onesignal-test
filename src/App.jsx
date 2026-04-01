@@ -55,9 +55,8 @@ export default function App() {
       setSubscribed(false);
       showToast("🔕 Unsubscribed from notifications.");
     } else {
-      // await OS.Notifications.requestPermission();
-      // const granted = OS.Notifications.permission === true;  
-      console.log("hehe")
+      await OS.Notifications.requestPermission();
+      const granted = OS.Notifications.permission === true;  
       setSubscribed(true);
       if (granted) showToast("🔔 You're now subscribed to deal alerts!");
     }
