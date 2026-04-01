@@ -25,9 +25,9 @@ export default function App() {
   useEffect(() => {
     window.OneSignalDeferred = window.OneSignalDeferred || [];
     window.OneSignalDeferred.push(function (OneSignal) {
+      console.log("triggered defredd !")
       setOsReady(true);
       setSubscribed(OneSignal.Notifications.permission === true);
-
       OneSignal.Notifications.addEventListener("permissionChange", (perm) => {
         setSubscribed(perm === true);
       });
@@ -42,7 +42,7 @@ export default function App() {
   const addToCart = useCallback(
     (name) => {
       setCartCount((c) => c + 1);
-      showToast(`🛒 Added ${name} to cart!`);
+      showToast(🛒 Added ${name} to cart!);
     },
     [showToast]
   );
@@ -61,6 +61,8 @@ export default function App() {
       if (granted) showToast("🔔 You're now subscribed to deal alerts!");
     }
   }, [osReady, subscribed, showToast]);
+
+  console.log("osReady :" , osReady)
 
   return (
     <>
