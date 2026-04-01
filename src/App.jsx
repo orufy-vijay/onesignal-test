@@ -42,7 +42,7 @@ export default function App() {
   const addToCart = useCallback(
     (name) => {
       setCartCount((c) => c + 1);
-      showToast(🛒 Added ${name} to cart!);
+      showToast("🛒 Added ${name} to cart!");
     },
     [showToast]
   );
