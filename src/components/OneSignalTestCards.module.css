@@ -1,0 +1,130 @@
+.wrapper {
+  margin: 0 5% 64px;
+}
+
+.heading {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.sub {
+  font-size: .95rem;
+  color: #64748b;
+  margin-bottom: 28px;
+}
+
+.waiting {
+  text-align: center;
+  color: #64748b;
+  padding: 40px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* ── Card ── */
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  transition: box-shadow .2s;
+}
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cardIcon {
+  font-size: 1.4rem;
+}
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.desc {
+  font-size: .85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* ── Inputs ── */
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.input {
+  flex: 1;
+  min-width: 80px;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: .85rem;
+  outline: none;
+  transition: border-color .15s;
+}
+.input:focus {
+  border-color: var(--primary, #e8001d);
+}
+
+/* ── Buttons ── */
+.btn {
+  padding: 8px 16px;
+  background: var(--primary, #e8001d);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity .15s;
+  white-space: nowrap;
+}
+.btn:hover {
+  opacity: .85;
+}
+
+.btnOutline {
+  background: transparent;
+  color: var(--primary, #e8001d);
+  border: 1.5px solid var(--primary, #e8001d);
+}
+.btnOutline:hover {
+  background: #fff0f0;
+  opacity: 1;
+}
+
+/* ── Result box ── */
+.result {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: .8rem;
+  color: #334155;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}

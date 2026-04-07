@@ -5,6 +5,7 @@ import AnnouncementBar from "./components/AnnouncementBar";
 import Hero from "./components/Hero";
 import Categories from "./components/Categories";
 import OneSignalPanel from "./components/OneSignalPanel";
+import OneSignalTestCards from "./components/OneSignalTestCards";
 import Products from "./components/Products";
 import PromoBanner from "./components/PromoBanner";
 import Footer from "./components/Footer";
@@ -75,6 +76,7 @@ export default function App() {
         osReady={osReady}
         onToggle={toggleNotifications}
       />
+      <OneSignalTestCards osReady={osReady} />
       <Products onAddToCart={addToCart} />
       <PromoBanner />
       <Footer />
