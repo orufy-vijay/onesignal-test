@@ -115,6 +115,7 @@ export default function OneSignalTestCards({ osReady }) {
       onesignalId: OS.User.onesignalId ?? "n/a",
     };
     log("PushSubscription info", info);
+    log("PushSubscription sub", sub);
     setSubInfo(info);
   }
 
