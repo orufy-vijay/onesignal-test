@@ -55,57 +55,85 @@ export default function OneSignalTestCards({ osReady }) {
 
   const OS = getOS();
 
+  const log = (label, data) => {
+    if (data !== undefined) {
+      console.log(`[OneSignal] ${label}`, data);
+    } else {
+      console.log(`[OneSignal] ${label}`);
+    }
+  };
+
   // ── Tag helpers ──────────────────────────────────────────────────────────
   async function handleAddTag() {
     if (!tagKey) return;
+    log("addTag →", { key: tagKey, value: tagValue });
     OS.User.addTag(tagKey, tagValue);
-    setTagsResult(`✅ Tag set: ${tagKey} = "${tagValue}"`);
+    const result = `✅ Tag set: ${tagKey} = "${tagValue}"`;
+    log("addTag ✓", result);
+    setTagsResult(result);
   }
 
   async function handleRemoveTag() {
     if (!tagKey) return;
+    log("removeTag →", tagKey);
     OS.User.removeTag(tagKey);
-    setTagsResult(`🗑 Tag removed: ${tagKey}`);
+    const result = `🗑 Tag removed: ${tagKey}`;
+    log("removeTag ✓", result);
+    setTagsResult(result);
   }
 
   async function handleGetTags() {
+    log("getTags →");
     const tags = await OS.User.getTags();
+    log("getTags ✓", tags);
     setTagsResult(tags);
   }
 
   // ── Login/Logout ─────────────────────────────────────────────────────────
   async function handleLogin() {
     if (!extId) return;
+    log("login →", extId);
     await OS.login(extId);
-    setLoginResult(`✅ Logged in as: ${extId}`);
+    const result = `✅ Logged in as: ${extId}`;
+    log("login ✓", result);
+    setLoginResult(result);
   }
 
   async function handleLogout() {
+    log("logout →");
     await OS.logout();
+    log("logout ✓");
     setLoginResult("👋 Logged out");
   }
 
   // ── Subscription Info ────────────────────────────────────────────────────
   function handleSubInfo() {
     const sub = OS.User.PushSubscription;
-    setSubInfo({
+    const info = {
       id: sub.id ?? "n/a",
       token: sub.token ? sub.token.slice(0, 40) + "…" : "n/a",
       onesignalId: OS.User.onesignalId ?? "n/a",
-    });
+    };
+    log("PushSubscription info", info);
+    setSubInfo(info);
   }
 
   // ── isPushSupported ───────────────────────────────────────────────────────
   function handleCheckSupport() {
-    setSupported(OS.Notifications.isPushSupported());
+    const result = OS.Notifications.isPushSupported();
+    log("isPushSupported →", result);
+    setSupported(result);
   }
 
   // ── Slidedown ─────────────────────────────────────────────────────────────
   async function handleSlidedown() {
     try {
+      log("Slidedown.promptPush →");
       await OS.Slidedown.promptPush();
+      log("Slidedown.promptPush ✓");
       setSlidedownResult("✅ Slidedown prompt triggered");
     } catch (e) {
+      log("Slidedown.promptPush ✗", e);
       setSlidedownResult("⚠️ " + e.message);
     }
   }
@@ -185,7 +213,9 @@ export default function OneSignalTestCards({ osReady }) {
             <button
               className={styles.btn}
               onClick={async () => {
+                log("PushSubscription.optIn →");
                 await OS.User.PushSubscription.optIn();
+                log("PushSubscription.optIn ✓");
                 setSubInfo({ status: "✅ Opted in" });
               }}
             >
@@ -194,7 +224,9 @@ export default function OneSignalTestCards({ osReady }) {
             <button
               className={`${styles.btn} ${styles.btnOutline}`}
               onClick={async () => {
+                log("PushSubscription.optOut →");
                 await OS.User.PushSubscription.optOut();
+                log("PushSubscription.optOut ✓");
                 setSubInfo({ status: "🔕 Opted out" });
               }}
             >
